@@ -45,7 +45,7 @@ var books = [{
     "category":"Fiction"
   },{
     "id":"6",
-    "name":"Subtle art of not giving a f*ck: a counterintuitive approach to living a good life",
+    "name":"Subtle art of not giving a f*ck",
     "description":"In this generation-defining self-help guide, a superstar blogger cuts through the crap to show us how to stop trying to be \"positive\" all the time so that we can truly become better, happier people.",
     "url":"res/images/notgiveafuck.jpg",
     "price":"21.99",

@@ -1,4 +1,31 @@
-$("#fiction").click(function(){writeBooks (0, "fiction");});
+function alertTimeout(wait){
+	setTimeout(function(){
+		$('#alert_addCart').alert('close');
+    }, wait);
+}
+
+function test() {
+	$("#alert_space").empty()
+    $("#alert_space").append(`
+		<div class="row">
+			<div id="alert_space" class="col-md-12 text-center">
+				<div id="alert_addCart" class="alert alert-success alert-dismissible fade show font-weight-bold">
+				  Item added to cart
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+			</div>
+			</div>`);
+    alertTimeout(2000);
+}
+
+$("#fiction").click(function(){writeBooks (0, "Fiction");});
+$("#literature").click(function(){writeBooks (0, "Literature");});
+$("#thriller").click(function(){writeBooks (0, "Thriller");});
+$("#psychology").click(function(){writeBooks (0, "Psychology");});
+$("#cook").click(function(){writeBooks (0, "Cook");});
+$("#poetry").click(function(){writeBooks (0, "Poetry");});
 
 function writeBooks (type, search) {
 	var genbooks = [];
@@ -7,43 +34,71 @@ function writeBooks (type, search) {
 	//categories
 	if(type == 0) {
 		for (i = 0; i < books.length; i++){
-			if(books[i].category.search( new RegExp(search, "i") !== -1)) {
+			if(books[i].category.search( new RegExp(search, "i")) !== -1) {
 				genbooks[index] = books[i];
+				index++;
 			}
 		}
+		$("#title").empty()
+		$("#title").append("Category: " + search)
 	}
 	
 	//search
 	if(type == 1) {
 		for (i = 0; i < books.length; i++){
-			if(books[i].title.search( new RegExp(search, "i") !== -1) || books[i].title.author( new RegExp(search, "i") !== -1)) {
+			if((books[i].title.search( new RegExp(search, "i")) !== -1) || (books[i].title.author( new RegExp(search, "i")) !== -1)) {
 				genbooks[index] = books[i];
+				index++;
 			}
 		}
 	}
 	
-  for (i = 0; i < genbooks.length; i++) {
 	$("#bookContainer").empty();
-    $("#bookContainer").append(`<div class="card text-center">
-				<div class="col-sm-6 offset-sm-3">
-					<img class="imgContainer card-img-top" src="` + genbooks[i].url + `" alt="`+ genbooks[i].title +`">
-				</div>
-				<div class="card-body">
-					<h4 class="card-title">` + genbooks[i].name + `</h4>
-					<h6> Author: ` + genbooks[i].author + `</h6>
-					<p class="card-text">` + genbooks[i].price + `</p>
-					<p class="card-text text-success">In stock</p>
-					<a href="#" class="btn btn-primary">Add to cart</a>
-				</div>
-			</div>`)
-  }
+	for (i = 0; i < genbooks.length; i++) {
+		$("#bookContainer").append(`<div class="card text-center">
+					<div class="mx-auto d-block" style="width:50%">
+						<img class="imgContainer card-img-top" src="` + genbooks[i].url + `" alt="`+ genbooks[i].title +`">
+					</div>
+					<div class="card-body">
+						<h4 class="card-title">` + genbooks[i].name + `</h4>
+					</div>
+						<h6> Author: ` + genbooks[i].author + `</h6>
+					<div class="card-footer">
+						<p class="card-text">` + genbooks[i].price + `</p>
+						<p class="card-text text-success">In stock</p>
+						<a onclick="test()" id="addToCart" class="btn btn-primary">Add to cart</a>
+					</div>
+				</div>`)
+	}	
 }
 
 function generateBooks() {
   var genbooks = [];
-  for (i = 0; i < 3; i++) {
-    genbooks[i] = Math.floor(Math.random() * 11);
-	//maybe watch for duplicate?
+  while(genbooks.length < 3){
+      var randomnumber = Math.floor(Math.random() * 10);
+      if(genbooks.indexOf(randomnumber) > -1) continue;
+      genbooks[genbooks.length] = randomnumber;
   }
   return genbooks;
 };
+
+$(document).ready(function fillSuggestedBook(){
+		genbooks = generateBooks();
+		$("#suggestedBook").empty();
+	for (i = 0; i < genbooks.length; i++) {
+		$("#suggestedBook").append(`<div class="card text-center">
+					<div class="mx-auto d-block" style="width:50%">
+						<img class="imgContainer card-img-top" src="` + books[genbooks[i]].url + `" alt="`+ books[genbooks[i]].title +`">
+					</div>
+					<div class="card-body">
+						<h4 class="card-title">` + books[genbooks[i]].name + `</h4>
+					</div>
+						<h6> Author: ` + books[genbooks[i]].author + `</h6>
+					<div class="card-footer">
+						<p class="card-text">` + books[genbooks[i]].price + `</p>
+						<p class="card-text text-success">In stock</p>
+						<a onclick="test()" id="addToCart" class="btn btn-primary">Add to cart</a>
+					</div>
+				</div>`)
+	}	
+});
