@@ -4,12 +4,19 @@
 
 .sidebar{
 	margin-bottom: 5%;
-	height: 100%;
 }
 
-#wrapper{
-	
+.title{
+	padding-bottom: 5%;
 }
+
+@media (min-width: 576px){
+	.card{
+		max-width: 33%;
+	}
+}
+
+
 
 .nav-item .accordion-toggle:after {
     /* symbol for "opening" panels */

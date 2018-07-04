@@ -34,37 +34,40 @@
 				</form>
 			</div>
 		</nav>
-		<div id="wrapper" class="container-fluid">
-			<nav class="col-sm-2 hidden-xs-down bg-faded sidebar">
+		<div class="container-fluid">
+			<div class="row">
+			<nav class="col-md-2 hidden-xs-down bg-faded sidebar">
 			  <ul class="nav nav-pills flex-column">
 				<li class="nav-item" >
 				  <a class="nav-link active accordion-toggle" data-toggle="collapse" data-target="#choices" href="categories.html">Categories      <span></span></a>
 				</li>
 				<div id="choices" class="collapse show">
 				<li class="nav-item">
-				  <a id="fiction" class="nav-link ">Fiction</a>
+				  <a id="fiction" class="nav-link" href="#">Fiction</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link" href="#">Literature</a>
+				  <a id="literature" class="nav-link" href="#">Literature</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link" href="#">Thriller</a>
+				  <a id="thriller" class="nav-link" href="#">Thriller</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link" href="#">Psychology</a>
+				  <a id="psychology" class="nav-link" href="#">Psychology</a>
 				</li>
 				<li class="nav-item">
-				  <a class="nav-link" href="#">Cook</a>
+				  <a id="cook" class="nav-link" href="#">Cook</a>
 				</li>
 				<li class="nav-item ">
-				  <a class="nav-link" href="#">Poetry</a>
+				  <a id="poetry" class="nav-link" href="#">Poetry</a>
 				</li>
 				</div>
 			  </ul>
 			</nav>
-			
-			<h3> Category: </h3>
-			<div id="bookContainer" class="card-columns col-sm-9 offset-sm-3">
+			<div class="col-md-10">
+				<h3 id="title" class="title"> Select a category </h3>
+				<div id="bookContainer" class="card-group">
+				</div>
+			</div>
 			</div>
 		</div>
 	</body>
