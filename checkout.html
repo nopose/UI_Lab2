@@ -9,7 +9,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
-		<link rel="stylesheet" href="res/css/shoppingCart.css">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Include SmartWizard CSS -->
+    <link href="res/smartWizard/SmartWizard-master/dist/css/smart_wizard.css" rel="stylesheet" type="text/css" />
+
+    <!-- Optional SmartWizard theme -->
+    <link href="res/smartWizard/SmartWizard-master/dist/css/smart_wizard_theme_circles.css" rel="stylesheet" type="text/css" />
+    <link href="res/smartWizard/SmartWizard-master/dist/css/smart_wizard_theme_arrows.css" rel="stylesheet" type="text/css" />
+    <link href="res/smartWizard/SmartWizard-master/dist/css/smart_wizard_theme_dots.css" rel="stylesheet" type="text/css" />
   </head>
   <body class="col-md-12">
    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -37,8 +46,172 @@
      </div>
    </nav>
    <div class="container">
+      <!-- SmartWizard html -->
+      <br/><br/><br/>
+      <div id="smartwizard">
+          <ul>
+              <li><a href="#step-1">Step 1<br /><small>Personal Information</small></a></li>
+              <li><a href="#step-2">Step 2<br /><small>Shipping Address</small></a></li>
+              <li><a href="#step-3">Step 3<br /><small>Shipping Options</small></a></li>
+              <li><a href="#step-4">Step 4<br /><small>Confirmation</small></a></li>
+          </ul>
+
+          <div>
+              <div id="step-1" class="">
+                  <h3 class="border-bottom border-gray pb-2">Personal Information</h3>
+                  <form id="contact-form">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <input type="text" name="firstname" id="inputFirstname" class="form-control" placeholder="First name">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <input type="text" name="lastname" id="inputLastname" class="form-control" placeholder="Last name">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <input type="email" class="form-control" name="email" id="inputEmail4" placeholder="Email">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="Password">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="address" id="inputAddress" placeholder="Street Address">
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <input type="text" class="form-control" name="city" id="inputCity" placeholder="City">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <select id="inputState" class="form-control">
+                          <option selected>Choose a province</option>
+                          <option>Alberta</option>
+                          <option>British Colombia</option>
+                          <option>Manitoba</option>
+                          <option>New Brunswick</option>
+                          <option>Newfoundland and Labrador</option>
+                          <option>Nova Scotia</option>
+                          <option>Ontario</option>
+                          <option>Prince Edward Island</option>
+                          <option>Quebec</option>
+                          <option>Saskatchewan</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-2">
+                        <input type="text" class="form-control" name="zip" id="inputZip" placeholder="Zip Code">
+                      </div>
+                    </div>
+                  </form>
+              </div>
+              <div id="step-2" class="">
+                  <h3 class="border-bottom border-gray pb-2">Step 2 Content</h3>
+                  <form id="address-form">
+                    <br/>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" onclick="toggleStatus();">
+                      <label class="form-check-label" for="inlineCheckbox1">Same as personal address.</label>
+                    </div>
+                    <br/><br/>
+                    <div id="shippingAddress">
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="address" id="inputAddress" placeholder="Street Address">
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <input type="text" class="form-control" name="city" id="inputCity" placeholder="City">
+                        </div>
+                        <div class="form-group col-md-4">
+                          <select id="inputState" class="form-control">
+                            <option selected>Choose a province</option>
+                            <option>Alberta</option>
+                            <option>British Colombia</option>
+                            <option>Manitoba</option>
+                            <option>New Brunswick</option>
+                            <option>Newfoundland and Labrador</option>
+                            <option>Nova Scotia</option>
+                            <option>Ontario</option>
+                            <option>Prince Edward Island</option>
+                            <option>Quebec</option>
+                            <option>Saskatchewan</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <input type="text" class="form-control" name="zip" id="inputZip" placeholder="Zip Code">
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+              </div>
+              <div id="step-3" class="">
+                <h3 class="border-bottom border-gray pb-2">Shipping Options</h3>
+                <br/>
+                <div class="row justify-content-center card-deck">
+                  <div class="card text-center border-success mb-3">
+                    <div class="card-header">
+                      Option 1
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Free-Shipping Method</h5>
+                      <p class="card-text">This method is the usual one with no specific charges.</p>
+                      <input type="radio" class="ShipOpt" value="" id="inlineCheckboxFree" name="options">
+                    </div>
+                    <div class="card-footer text-muted">
+                      0$
+                      <h6>7 to 10 days</h6>
+                    </div>
+                  </div>
+                  <div class="card text-center border-success mb-3">
+                    <div class="card-header">
+                      Option 2
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Fast-Shipping Method</h5>
+                      <p class="card-text">This method is the most used and affordable.</p>
+                      <input type="radio" class="ShipOpt" value="" id="inlineCheckboxNormal" name="options">
+                    </div>
+                    <div class="card-footer text-muted">
+                      10-15$
+                      <h6>3 to 5 days</h6>
+                    </div>
+                  </div>
+                  <div class="card text-center border-success mb-3">
+                    <div class="card-header">
+                      Option 3
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">OneDay-Shipping Method</h5>
+                      <p class="card-text">This method is the fastest, but the most expensive.</p>
+                      <input type="radio" class="ShipOpt" value="" id="inlineCheckboxExp" name="options">
+                    </div>
+                    <div class="card-footer text-muted">
+                      20-35$
+                      <h6>1 day guaranteed</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="step-4" class="">
+                  <h3 class="border-bottom border-gray pb-2">Confirmation <i class="fas fa-check-double"></i></h3>
+                  <br/>
+                  <h4 class="text-success">Click <mark>finish</mark> to complete your order.</h4>
+                  <br/>
+              </div>
+          </div>
+      </div>
   </div>
 
   <script src="res/objects/books.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Include SmartWizard JavaScript source -->
+    <script type="text/javascript" src="res/smartWizard/SmartWizard-master/dist/js/jquery.smartWizard.min.js"></script>
+    <script type="text/javascript" src="res/javascript/checkout.js"></script>
+
+    </script>
   </body>
 </html>
