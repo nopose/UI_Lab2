@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html>
-	<head>
+<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+		
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+		<link rel="stylesheet" href="res/custom.css">
 	</head>
 	
 	<body>
@@ -25,20 +27,41 @@
 						<a class="nav-link" href="categories.html">Categories</a>
 					</li>
 				</ul>
-				<form class="form-inline my-2 my-lg-0" role="search" action="search.html">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search">
+				<form class="form-inline my-2 my-lg-0" role="search" onsubmit="return search()">
+					<input id="result" class="form-control mr-sm-2" type="search" placeholder="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
 			</div>
 		</nav>
 		<div class="container-fluid">
 			<div class="jumbotron text-center">
-				<h4>Results for your search "1984"</h4>
-				<h4>10 results</h4>
+				<h4 id="writeSearch">Results for your search ""</h4>
+				<h4 id="writeNumber">0 results</h4>
+				<form onsubmit="return localsearch()">
+					<div class="form-group col-md-6 mx-auto">
+						<label class="float-left font-weight-bold">New search</label>
+						<input id="localResult" class="form-control mr-sm-2" type="search" placeholder="Search">
+					</div>
+				</form>
 			</div>
-			<div class="row" id="books">
+			<div id="bookContainer" class="card-group">
 				<!--render books here-->
 			</div>
 		</div>
 	</body>
+	<script src="res/objects/books.js"></script>
+	<script type="text/javascript" src="res/javascript/general_book.js" ></script>
+	<script>
+		$(document).ready(function(){
+		 var value = localStorage.getItem("result");
+		 if(value != null){
+			$("#writeSearch").text("Results for your search \"" + value + "\"");
+			var number = writeBooks(1, value);
+			$("#writeNumber").text(number + " results");
+		} else {
+			$("#writeSearch").text("You didn't enter any search parameters");
+		}
+		 localStorage.removeItem("result");
+		});
+	</script>
 </html>

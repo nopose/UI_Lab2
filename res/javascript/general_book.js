@@ -46,7 +46,7 @@ function writeBooks (type, search) {
 	//search
 	if(type == 1) {
 		for (i = 0; i < books.length; i++){
-			if((books[i].title.search( new RegExp(search, "i")) !== -1) || (books[i].title.author( new RegExp(search, "i")) !== -1)) {
+			if((books[i].name.search( new RegExp(search, "i")) !== -1) || (books[i].author.search( new RegExp(search, "i")) !== -1)) {
 				genbooks[index] = books[i];
 				index++;
 			}
@@ -63,13 +63,15 @@ function writeBooks (type, search) {
 						<h4 class="card-title">` + genbooks[i].name + `</h4>
 					</div>
 						<h6> Author: ` + genbooks[i].author + `</h6>
+						<a href="details.html" id="addToCart" class="btn btn-success">More details</a>
 					<div class="card-footer">
 						<p class="card-text">` + genbooks[i].price + `$</p>
 						<p class="card-text text-success">In stock</p>
 						<a onclick="test()" id="addToCart" class="btn btn-success">Add to cart</a>
 					</div>
 				</div>`)
-	}	
+	}
+	return genbooks.length;
 }
 
 function generateBooks() {
@@ -102,3 +104,19 @@ $(document).ready(function fillSuggestedBook(){
 				</div>`)
 	}	
 });
+
+function search(){
+	var value = $("#result").val();
+	localStorage.setItem("result", value);
+	window.location.href="search.html";
+	return false
+}
+
+
+function localsearch(){
+	var value = $("#localResult").val();
+	localStorage.setItem("result", value);
+	console.log(value);
+	window.location.href="search.html";
+	return false
+}

@@ -13,6 +13,7 @@
 @media (min-width: 576px){
 	.card{
 		max-width: 33%;
+		min-width: 25%;
 	}
 	
 	.wrapper{
