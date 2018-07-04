@@ -37,7 +37,7 @@ var library = {
         "price":"25.99",
         "author":"John Green",
         "year":"2017",
-        "category":"Ficton"
+        "category":"Fiction"
       },
       "book":{
         "id":"4",
