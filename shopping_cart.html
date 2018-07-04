@@ -2,26 +2,49 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
- </head>
- <body class="col-md-12">
-  <div class="shopping-cart" >
-    <!-- Title -->
-    <div class="title">
-      My Shopping Cart
-    </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
-    <!-- Products -->
-    <div id="items">
+		<link rel="stylesheet" href="res/css/shoppingCart.css">
+  </head>
+  <body class="col-md-12">
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+     <a class="navbar-brand" href="home.html">BookShop</a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
 
-    </div>
-
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       <ul class="navbar-nav ml-auto">
+         <li class="nav-item active">
+           <a class="nav-link" href="home.html">Home</a>
+         </li>
+         <li class="nav-item active">
+           <a class="nav-link" href="categories.html">Categories</a>
+         </li>
+         <li class="nav-item active">
+           <a class="nav-link" href="shopping_cart.html"><i class='fas fa-shopping-cart'></i></a>
+         </li>
+       </ul>
+       <form class="form-inline my-2 my-lg-0" role="search" action="search.html">
+         <input class="form-control mr-sm-2" type="search" placeholder="Search">
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+       </form>
+     </div>
+   </nav>
+   <div class="shopping-cart" >
+     <!-- Title -->
+     <div class="title">
+       My Shopping Cart
+     </div>
+     <!-- Products -->
   </div>
 
   <script src="res/objects/books.js"></script>
-  <script type="text/javascript" src="res/javascript/shopping_cart.js" >
-
-  </script>
-</body>
+  <script type="text/javascript" src="res/javascript/shopping_cart.js" ></script>
+  </body>
 </html>
