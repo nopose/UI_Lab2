@@ -8,26 +8,26 @@ $(document).ready(function () {
     console.log("yep");
     $("#items").append("<div class='item'>\n" +
                 "<div class='buttons'>\n" +
-                  "<span class='delete-btn' ></span>\n" +
-                  "<span class='like-btn' ></span>\n" +
+                  "<span class='delete-btn'></span>\n" +
+                  "<span class='like-btn'></span>\n" +
                 "</div>\n" +
                 "<div class='image'>\n" +
-                  "<img src='" + books[booksInCart[i]].url + "' alt='"+ books[booksInCart[i]].category +"' height='42' width='42' />\n" +
+                  "<img src='" + books[booksInCart[i]].url + "' alt='"+ books[booksInCart[i]].category +"' />\n" +
                 "</div>\n" +
-                "<div class'description'>\n" +
-                  "<span class='name'>"+ books[booksInCart[i]].name +"</span><br/>" +
-                  "<span class='author'>"+ books[booksInCart[i]].author + " ~ " + books[booksInCart[i]].year +"</span><br/>" +
+                "<div class='description'>\n" +
+                  "<span>"+ books[booksInCart[i]].name +"</span>" +
+                  "<span>"+ books[booksInCart[i]].author + " ~ " + books[booksInCart[i]].year +"</span>" +
                 "</div>\n" +
                 "<div class='quantity'>\n" +
                   "<button class='plus-btn' type='button' name='button'>\n" +
-                    "<img src='plus.svg' alt='' />\n" +
+                    "<i class='far fa-minus-square'></i>\n" +
                   "</button>\n" +
                   "<input type='text' name='Quantity' value='"+ quantity[i] + "'disabled>\n" +
                   "<button class='minus-btn' type='button' name='button'>\n" +
-                    "<img src='minus.svg' alt='' />\n" +
+                    "<i class='far fa-plus-square'></i>\n" +
                   "</button>\n" +
                 "</div>\n" +
-                "<div class='totalPrice'>" + (quantity[i] * books[booksInCart[i]].price).toFixed(2) + "$</div>\n" +
+                "<div class='total-price'>" + (quantity[i] * books[booksInCart[i]].price).toFixed(2) + "$</div>\n" +
               "</div>\n");
   }
 });
@@ -35,7 +35,7 @@ $(document).ready(function () {
 function generateBooks() {
   var genbooks = [];
   for (i = 0; i < 3; i++) {
-    genbooks[i] = Math.floor(Math.random() * 11);
+    genbooks[i] = Math.floor(Math.random() * 10);
 	//maybe watch for duplicate?
   }
   return genbooks;
