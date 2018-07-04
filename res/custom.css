@@ -14,6 +14,10 @@
 	.card{
 		max-width: 33%;
 	}
+	
+	.wrapper{
+		padding-left: 30px;
+	}
 }
 
 
