@@ -18,3 +18,9 @@
     float: right;        /* adjust as needed */
     color: #f48c42;         /* adjust as needed */
 }
+
+@media (max-width: 575px){
+	.imgContainer{
+		max-width: 50%;
+	}
+}
