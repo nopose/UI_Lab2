@@ -1,7 +1,7 @@
 .shopping-cart {
    width: 750px;
    height: 25%;
-   margin: 80px auto;
+   margin: 20px auto;
    background: #FFFFFF;
    box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
    border-radius: 6px;
@@ -9,6 +9,21 @@
    display: flex;
    flex-direction: column;
  }
+
+.PriceTotal {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #E1E8EE;
+  color: #5E6977;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+#checkoutBTN {
+  margin-right: 10px;
+}
+
  .title {
    height: 60px;
    border-bottom: 1px solid #E1E8EE;
@@ -144,7 +159,8 @@
      height: auto;
      overflow: hidden;
    }
-   .item {
+   .item,
+   .finalTotal {
      height: auto;
      flex-wrap: wrap;
      justify-content: center;
