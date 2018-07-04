@@ -20,6 +20,21 @@
 	}
 }
 
+.wrapper{
+	padding-bottom: 5%;
+}
+
+.card-footer a {
+	color: white !important;
+}
+
+#changeColor{
+	background-color: #5cb85c !important;
+}
+
+.nav-link{
+	color: #5cb85c;
+}
 
 
 .nav-item .accordion-toggle:after {
@@ -28,7 +43,7 @@
 	font-weight: 900;
     content: "\f078";    /* adjust as needed, taken from bootstrap.css */
     float: right;        /* adjust as needed */
-    color: #f48c42;         /* adjust as needed */
+    color: white;         /* adjust as needed */
 }
 .nav-item .accordion-toggle.collapsed:after {
     /* symbol for "collapsed" panels */
@@ -36,7 +51,7 @@
 	font-weight: 900;
     content: "\f054";    /* adjust as needed, taken from bootstrap.css */
     float: right;        /* adjust as needed */
-    color: #f48c42;         /* adjust as needed */
+    color: white;         /* adjust as needed */
 }
 
 @media (max-width: 575px){

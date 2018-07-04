@@ -64,9 +64,9 @@ function writeBooks (type, search) {
 					</div>
 						<h6> Author: ` + genbooks[i].author + `</h6>
 					<div class="card-footer">
-						<p class="card-text">` + genbooks[i].price + `</p>
+						<p class="card-text">` + genbooks[i].price + `$</p>
 						<p class="card-text text-success">In stock</p>
-						<a onclick="test()" id="addToCart" class="btn btn-primary">Add to cart</a>
+						<a onclick="test()" id="addToCart" class="btn btn-success">Add to cart</a>
 					</div>
 				</div>`)
 	}	
@@ -95,9 +95,9 @@ $(document).ready(function fillSuggestedBook(){
 					</div>
 						<h6> Author: ` + books[genbooks[i]].author + `</h6>
 					<div class="card-footer">
-						<p class="card-text">` + books[genbooks[i]].price + `</p>
+						<p class="card-text">` + books[genbooks[i]].price + `$</p>
 						<p class="card-text text-success">In stock</p>
-						<a onclick="test()" id="addToCart" class="btn btn-primary">Add to cart</a>
+						<a onclick="test()" id="addToCart" class="btn btn-success">Add to cart</a>
 					</div>
 				</div>`)
 	}	
