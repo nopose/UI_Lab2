@@ -6,7 +6,6 @@ $(document).ready(function () {
   var content = "";
   //alert(books[booksInCart[0]].name);
   for (i = 0; i < 3; i++) {
-    console.log("yep");
     $("#SC").append("<div class='item'>\n" +
                 "<div class='buttonsSC'>\n" +
                   "<span class='delete-btn'></span>\n" +

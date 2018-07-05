@@ -1,24 +1,3 @@
-body, html {
-    height: 100%;
-    margin: 0;
-}
-
-.bg {
-    /* The image used */
-    background-image: url("images/book3.jpg");
-
-    /* Full height */
-    height: 100%;
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    margin-top: -5%;
-		margin-bottom: 2%;
-}
-
 .navbar{
 	margin-bottom: 5%;
 }
@@ -36,11 +15,11 @@ body, html {
 		max-width: 33%;
 		min-width: 25%;
 	}
-
+	
 	.wrapper{
 		padding-left: 30px;
 	}
-
+	
 	.detail-wrapper{
 		max-width: 50%;
 	}
@@ -97,3 +76,4 @@ body, html {
 	.accordion-toggle {
 		min-width: 130px;
 	}
+	

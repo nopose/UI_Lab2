@@ -105,6 +105,11 @@ $(document).ready(function fillSuggestedBook(){
 					</div>
 				</div>`)
 	}
+
+	$(window).on('hashchange', function(e){
+    // do something...
+		writeBooks(0, "Fiction");
+	});
 });
 
 function search(){
@@ -126,7 +131,7 @@ function bookDetails(search){
 	localStorage.setItem("detail", search);
 	window.location.href="book_details.html";
 }
-	
+
 function loadDetails(){
 	var search = localStorage.getItem("detail");
 	var genbooks;
@@ -137,9 +142,9 @@ function loadDetails(){
 			break;
 		}
 	}
-	
+
 	$("#bookContainer").empty();
-	
+
 	$("#bookContainer").append(`<div class="row bottom-row">
 				<div class="col-md-4">
 					<img class="imgContainer card-img-top" src="` + genbooks.url + `" alt="` + genbooks.name + `">
@@ -164,11 +169,11 @@ function loadDetails(){
 					</div>
 					<div class="row">
 						<h6 class="text-success">In stock</h6>
-						
+
 					</div>
 					<div class="row">
 					<a onclick="test()" href="#alert_space" id="addToCart" class="btn btn-success">Add to cart</a>
 					</div>
 				</div>
-			</div>`)	
+			</div>`)
 }

@@ -1,0 +1,85 @@
+$(document).ready(function () {
+  var content = "";
+  //alert(books[booksInCart[0]].name);
+
+  $("#AllBooks").append(`<h2 class="title"> Most popular this year. </h3><div class="row justify-content-center card-deck" id="bookPopular-container" >`);
+  for (i = 0; i < 3; i++) {
+  		$("#bookPopular-container").append(`<div class="card text-center">
+				<div class="mx-auto d-block" style="width:50%">
+					<img class="imgContainer card-img-top" src="` + books[i].url + `" alt="`+ books[i].title +`">
+				</div>
+				<div class="card-body">
+					<h4 class="card-title">` + books[i].name + `</h4>
+				</div>
+					<h6> Author: ` + books[i].author + `</h6>
+				<div class="card-footer">
+					<p class="card-text" style='overflow:hidden; text-overflow:ellipsis; width:300px; white-space: nowrap; display:block;' >` + books[i].description + `</p>
+					<p class="card-text text-muted">` + books[i].price + `$</p>
+					<p class="card-text text-success">In stock</p>
+          <div class="row justify-content-center">
+            <div class="form-group col-md-5">
+  					   <a onclick="test()" href="#alert_space" id="addToCart" class="btn btn-success">Add to cart</a>
+            </div>
+            <div class="form-group col-md-5">
+  					     <a onclick="bookDetails('`+ books[i].name + `')" href="javascript:void(0);" id="addToCart" class="btn btn-success">More details</a>
+            </div>
+          </div>
+        </div>
+			</div>`);
+  	}
+    $("#AllBooks").append(`</div>`);
+
+    $("#AllBooks").append(`<h2 class="title"> Bestsellers of the month! </h3><div class="row justify-content-center card-deck" id="bookBest-container" >`);
+    for (i = 3; i < 6; i++) {
+        $("#bookBest-container").append(`<div class="card text-center">
+          <div class="mx-auto d-block" style="width:50%">
+            <img class="imgContainer card-img-top" src="` + books[i].url + `" alt="`+ books[i].title +`">
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">` + books[i].name + `</h4>
+          </div>
+            <h6> Author: ` + books[i].author + `</h6>
+          <div class="card-footer">
+            <p class="card-text" style='overflow:hidden; text-overflow:ellipsis; width:400px; white-space: nowrap; display:block;' >` + books[i].description + `</p>
+            <p class="card-text text-muted">` + books[i].price + `$</p>
+            <p class="card-text text-success">In stock</p>
+            <div class="row justify-content-center">
+              <div class="form-group col-md-5">
+                 <a onclick="test()" href="#alert_space" id="addToCart" class="btn btn-success">Add to cart</a>
+              </div>
+              <div class="form-group col-md-5">
+                   <a onclick="bookDetails('`+ books[i].name + `')" href="javascript:void(0);" id="addToCart" class="btn btn-success">More details</a>
+              </div>
+            </div>
+          </div>
+        </div>`);
+      }
+      $("#AllBooks").append(`</div>`);
+
+      $("#AllBooks").append(`<h2 class="title"> New Arrival this week! </h3><div class="row justify-content-center card-deck" id="bookArrival-container" >`);
+      for (i = 6; i < 10; i++) {
+          $("#bookArrival-container").append(`<div class="card text-center">
+            <div class="mx-auto d-block" style="width:50%">
+              <img class="imgContainer card-img-top" src="` + books[i].url + `" alt="`+ books[i].title +`">
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">` + books[i].name + `</h4>
+            </div>
+              <h6> Author: ` + books[i].author + `</h6>
+            <div class="card-footer">
+              <p class="card-text" style='overflow:hidden; text-overflow:ellipsis; width:300px; white-space: nowrap; display:block;' >` + books[i].description + `</p>
+              <p class="card-text text-muted">` + books[i].price + `$</p>
+              <p class="card-text text-success">In stock</p>
+              <div class="row justify-content-center">
+                <div class="form-group col-md-5">
+                   <a onclick="test()" href="#alert_space" id="addToCart" class="btn btn-success">Add to cart</a>
+                </div>
+                <div class="form-group col-md-5">
+                     <a onclick="bookDetails('`+ books[i].name + `')" href="javascript:void(0);" id="addToCart" class="btn btn-success">More details</a>
+                </div>
+              </div>
+            </div>
+          </div>`);
+        }
+        $("#AllBooks").append(`</div>`);
+});
