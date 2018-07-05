@@ -30,10 +30,10 @@
            <a class="nav-link" href="shopping_cart.html"><i class="fas fa-shopping-cart" ></i><span class="badge badge-pill badge-success">3</span></a>
          </li>
        </ul>
-       <form class="form-inline my-2 my-lg-0" role="search" action="search.html">
-         <input class="form-control mr-sm-2" type="search" placeholder="Search">
-         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-       </form>
+       <form class="form-inline my-2 my-lg-0" role="search" onsubmit="return search()">
+			<input id="result" class="form-control mr-sm-2" type="search" placeholder="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
      </div>
    </nav>
    <div class="container">
