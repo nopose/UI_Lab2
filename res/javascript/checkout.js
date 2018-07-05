@@ -242,8 +242,8 @@ function validateStepFour() {
     succes = false;
   } else { $("#numberError").html("").removeClass("text-danger"); }
 
-  if (cardMonth <= 0) {
-    $("#monthError").html("The month is required.").addClass("text-danger");
+  if (cardMonth <= 7) {
+    $("#monthError").html("This card is expired.").addClass("text-danger");
     success = false;
   } else { $("#monthError").html("").removeClass("text-danger"); }
 
