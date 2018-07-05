@@ -28,8 +28,6 @@ $("#cook").click(function(){writeBooks (0, "Cook");});
 $("#poetry").click(function(){writeBooks (0, "Poetry");});
 
 function writeBooks (type, search) {
-	console.log(type)
-	console.log(search)
 	var genbooks = [];
 	index = 0;
 

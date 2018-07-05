@@ -29,7 +29,7 @@ $(document).ready(function () {
                 "</div>\n" +
                 "<div id='"+ booksInCart[i] +"' class='total-price'>" + (quantity[i] * books[booksInCart[i]].price).toFixed(2) + "$</div>\n" +
               "</div>\n");
-    TOTAL += parseInt((quantity[i] * books[booksInCart[i]].price));
+    TOTAL += parseFloat((quantity[i] * books[booksInCart[i]].price));
   }
 
 
@@ -41,9 +41,9 @@ $(document).ready(function () {
     var $this = $(this);
     var $input = $this.closest('div').find('input');
     var id = $input.attr("id");
-    var value = parseInt($input.val());
+    var value = parseFloat($input.val());
 
-    if (value > 1) {
+    if (value > 0) {
         value = value - 1;
         valid = true;
     } else {
@@ -64,7 +64,7 @@ $(document).ready(function () {
       var $this = $(this);
       var $input = $this.closest('div').find('input');
       var id = $input.attr("id");
-      var value = parseInt($input.val());
+      var value = parseFloat($input.val());
 
       if (value < 100) {
           value = value + 1;
@@ -76,7 +76,6 @@ $(document).ready(function () {
           updateFinalTotal(getPrice(id).toFixed(2))
           $("#" + id +".minus-btn").addAttr('disabled');
       }
-
       $input.val(value);
       if (valid) {
         changeTotal(value, id, "inc");
@@ -88,13 +87,14 @@ $(document).ready(function () {
 function changeTotal(value, id, action) {
   $("#"+ id +".total-price").html((value * getPrice(id)).toFixed(2) + "$");
   if (action == "inc" && (value) != 101)
-    updateFinalTotal(parseInt(getPrice(id)));
+    updateFinalTotal(parseFloat(getPrice(id)));
   else if (action == "dec" && (value) != -1)
-    updateFinalTotal(parseInt(-getPrice(id)));
+    updateFinalTotal(parseFloat(-getPrice(id)));
 };
 
 function updateFinalTotal(changes) {
   $(".PriceTotal").html("Your total is (w/ taxes) : <mark>" + ((TOTAL += changes) * 1.13).toFixed(2) + "$</mark><a href='checkout.html'><button id='checkoutBTN' type='button' class='btn btn-success float-right'>Proceed to Checkout</button></a>");
+	console.log(TOTAL);
 }
 
 function getPrice(bookID) {
