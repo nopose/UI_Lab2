@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 
     // Step show event
@@ -18,7 +17,7 @@ $(document).ready(function(){
     // Toolbar extra buttons
     var btnFinish = $('<button></button>').text('Finish')
                                      .addClass('btn btn-success')
-                                     .on('click', function(){ window.location.href = "home.html"; });
+                                     .on('click', function(){ displayCheckedOutCompleted(); });
     var btnCancel = $('<button></button>').text('Reset')
                                      .addClass('btn btn-dark')
                                      .on('click', function(){ $('#smartwizard').smartWizard("reset"); });
@@ -40,18 +39,24 @@ $(document).ready(function(){
     $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
          if (parseInt(stepNumber) == 0) {
            // Validate step 1
-           if (!validateStepOne())
+           if (!validateStepOne()) {
             return false;
-           return true;
+           }
          } else if (parseInt(stepNumber) == 1) {
            // Validate step 2
-           alert("Step 2 DONE.");
+           if (!validateStepTwo()) {
+            return false;
+           }
          } else if (parseInt(stepNumber) == 2) {
            // Validate step 3
-           alert("Step 3 DONE.");
+           if (!validateStepThree()) {
+            return false;
+           }
          } else if (parseInt(stepNumber) == 3) {
            // Validate step 4
-           alert("Step 4 DONE.");
+           if (!validateStepFour()) {
+            return false;
+           }
          }
       });
 
@@ -91,7 +96,8 @@ $(document).ready(function(){
 });
 
 function toggleStatus() {
-    if ($('#inlineCheckbox1').is(':checked')) {
+
+    if ($('#inlineCheckbox2').is(':checked')) {
         $('#shippingAddress :input').attr('disabled', true);
     } else {
         $('#shippingAddress :input').removeAttr('disabled');
@@ -152,7 +158,114 @@ function validateStepOne() {
     success = false;
   } else { $("#zipError").html("").removeClass("text-danger"); success = true; }
 
-  if (!success) {
-    window.location.href = "checkout.html#step-1";
+  return success;
+}
+
+function validateStepTwo() {
+  var sameAS = document.getElementById("inlineCheckbox2").checked;
+  var address = $("#inputAddress2").val();
+  var city = $("#inputCity2").val();
+  var province = document.getElementById("inputState2").value;
+  var zip = $("#inputZip2").val();
+
+  var success = true;
+
+  if (!sameAS) {
+  if (address.length < 6 || address === "") {
+      $("#addError2").html("The address is required and must be at least 6 caracters.").addClass("text-danger");
+      success = false;
+    } else { $("#addError2").html("").removeClass("text-danger"); success = true; }
+
+    if (city.length < 6 || city === "") {
+      $("#cityError2").html("The city is required and must be at least 6 caracters.").addClass("text-danger");
+      success = false;
+    } else { $("#cityError2").html("").removeClass("text-danger"); success = true; }
+
+    if (province <= 0) {
+      $("#provError2").html("The province is required.").addClass("text-danger");
+      success = false;
+    } else { $("#provError2").html("").removeClass("text-danger"); success = true; }
+
+    re = /^[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ][0-9][ABCEGHJKLMNPRSTVWXYZ][0-9]$/;
+    if (!(re.test(String(zip))) || zip === "") {
+      $("#zipError2").html("The zip is required and must satisfy this pattern [A1B2C3].").addClass("text-danger");
+      success = false;
+    } else { $("#zipError2").html("").removeClass("text-danger"); success = true; }
   }
+
+  return success;
+}
+
+function validateStepThree() {
+
+  var success = true;
+
+  if (!($("input:radio[name='options']:checked").length > 0)) {
+    $("#methodError").html("The option is required. You must choose at least one method.").addClass("text-danger");
+    success = false;
+  } else { $("#methodError").html("").removeClass("text-danger"); success = true; }
+
+  return success;
+}
+
+function validateStepFour() {
+  var cardHolderName = $("#card-holder-name").val();
+  var cardNumber = $("#card-number").val();
+  var cardMonth = document.getElementById("monthChecked").value;
+  var cardYear = document.getElementById("yearChecked").value;
+  var cardCVV = $("#cvv").val();
+
+  var success = true;
+
+  if (cardHolderName.length < 6 || cardHolderName === "") {
+    $("#holderError").html("The Card Holder's name is required and must be at least 6 caracters.").addClass("text-danger");
+    success = false;
+  } else { $("#holderError").html("").removeClass("text-danger"); success = true; }
+
+  var re = /^[0-9]{12}$/;
+  if (!(re.test(String(cardNumber)))) {
+    $("#numberError").html("The Card Number is required and must be 12 numbers.").addClass("text-danger");
+    succes = false;
+  } else { $("#numberError").html("").removeClass("text-danger"); }
+
+  if (cardMonth <= 0) {
+    $("#monthError").html("The month is required.").addClass("text-danger");
+    success = false;
+  } else { $("#monthError").html("").removeClass("text-danger"); success = true; }
+
+  if (cardYear <= 0) {
+    $("#yearError").html("The year is required.").addClass("text-danger");
+    success = false;
+  } else { $("#yearError").html("").removeClass("text-danger"); success = true; }
+
+  var re = /^[0-9]{3}$/;
+  if (!(re.test(String(cardCVV)))) {
+    $("#cvvError").html("The Security Code is required and must be 3 numbers.").addClass("text-danger");
+    success = false;
+  } else { $("#cvvError").html("").removeClass("text-danger"); success = true; }
+
+  return success;
+}
+
+function alertTimeout(wait){
+	setTimeout(function(){
+		$('#alert_addCart').alert('close');
+    window.location.href = "home.html";
+    }, wait);
+}
+
+function displayCheckedOutCompleted() {
+	$("#alert_space_checkout").empty()
+    $("#alert_space_checkout").append(`
+		<div class="row">
+			<div id="alert_space_checkout" class="col-md-12 text-center">
+				<div id="alert_addCart" class="alert alert-success alert-dismissible fade show font-weight-bold">
+				  Order successfully completed, you'll receive an email of confirmation.
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+			</div>
+			</div>`);
+    alertTimeout(2000);
 }
