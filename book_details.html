@@ -33,39 +33,59 @@
 				</form>
 			</div>
 		</nav>
+		
 		<div class="container-fluid">
-			<div class="jumbotron text-center">
-				<h4 id="writeSearch">Results for your search ""</h4>
-				<h4 id="writeNumber">0 results</h4>
-				<form onsubmit="return localsearch()">
-					<div class="form-group col-md-6 mx-auto">
-						<label class="float-left font-weight-bold">New search</label>
-						<input id="localResult" class="form-control mr-sm-2" type="search" placeholder="Search">
-					</div>
-				</form>
-			</div>
 			<div class="row">
 				<div id="alert_space" class="col-md-12">
 				</div>
 			</div>
-			<div id="bookContainer" class="card-group">
-				<!--render books here-->
+		
+			<div class="offset-3 detail-wrapper bottom-row">
+			<div class="row bottom-row">
+				<div class="col-md-4">
+					<img class="imgContainer card-img-top" src="res/images/turtlesallthewaydown.jpg" alt="Turtles all the way down">
+				</div>
+				<div class="col-md-7 offset-md-1">
+					<div class="row">
+						<h4 class="font-weight-bold">Turtles all the way down</h4>
+					</div>
+					<div class="row bottom-row">
+						<h6 class="font-weight-bold">Author: John Green</h6>
+					</div>
+					<div class="row">
+						<h6 class="font-weight-bold">Summary</h6></br>
+						<p>Turtles All the Way Down is about lifelong friendship, the intimacy of an unexpected reunion, Star Wars fan fiction, and tuatara. But at its heart is Aza Holmes, a young woman navigating daily existence within the ever-tightening spiral of her own thoughts.<p>
+					</div>
+					<div class="row bottom-row">
+						<h6 class="font-weight-bold">Category:&nbsp;</h6>
+						<h6> Fiction</h6>
+					</div>
+					<div class="row">
+						<h6 class="font-weight-bold">17.99$</h6>
+					</div>
+					<div class="row">
+						<h6 class="text-success">In stock</h6>
+						
+					</div>
+					<div class="row">
+					<a onclick="test()" href="#alert_space" id="addToCart" class="btn btn-success">Add to cart</a>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12 jumbotron">
+					<div class="row">
+						<h3 class="col-md-12">You may also like</h3>
+						<div id="suggestedBook" class="card-group mx-auto">
+							
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>
 	<script src="res/objects/books.js"></script>
 	<script type="text/javascript" src="res/javascript/general_book.js" ></script>
-	<script>
-		$(document).ready(function(){
-		 var value = localStorage.getItem("result");
-		 if(value != null){
-			$("#writeSearch").text("Results for your search \"" + value + "\"");
-			var number = writeBooks(1, value);
-			$("#writeNumber").text(number + " results");
-		} else {
-			$("#writeSearch").text("You didn't enter any search parameters");
-		}
-		 localStorage.removeItem("result");
-		});
-	</script>
 </html>
