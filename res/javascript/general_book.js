@@ -63,7 +63,7 @@ function writeBooks (type, search) {
 						<h4 class="card-title">` + genbooks[i].name + `</h4>
 					</div>
 						<h6> Author: ` + genbooks[i].author + `</h6>
-						<a onclick="bookDetails('`+ genbooks[i].name + `')" href="javascript:void(0);" id="addToCart" class="btn btn-success">More details</a>
+						<a onclick="bookDetails('`+ genbooks[i].id + `')" href="javascript:void(0);" id="addToCart" class="btn btn-success">More details</a>
 					<div class="card-footer">
 						<p class="card-text">` + genbooks[i].price + `$</p>
 						<p class="card-text text-success">In stock</p>
@@ -97,7 +97,7 @@ $(document).ready(function fillSuggestedBook(){
 						<h4 class="card-title">` + books[genbooks[i]].name + `</h4>
 					</div>
 						<h6> Author: ` + books[genbooks[i]].author + `</h6>
-						<a onclick="bookDetails('`+ books[genbooks[i]].name + `')" href="javascript:void(0);" id="addToCart" class="btn btn-success">More details</a>
+						<a onclick="bookDetails('`+ books[genbooks[i]].id + `')" href="javascript:void(0);" id="addToCart" class="btn btn-success">More details</a>
 					<div class="card-footer">
 						<p class="card-text">` + books[genbooks[i]].price + `$</p>
 						<p class="card-text text-success">In stock</p>
@@ -132,7 +132,7 @@ function loadDetails(){
 	var genbooks;
 	//search
 	for (i = 0; i < books.length; i++){
-		if(books[i].name.search( new RegExp(search, "i")) !== -1) {
+		if(books[i].id === search) {
 			genbooks = books[i];
 			break;
 		}
