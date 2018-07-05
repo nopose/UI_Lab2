@@ -78,8 +78,8 @@ $(document).ready(function () {
               <h6> Author: ` + books[i].author + `</h6>
               <a onclick="bookDetails('`+ books[i].id + `')" href="javascript:void(0);" id="addToCart" class="btn btn-success">More details</a>
             <div class="card-footer">
-              <p class="card-text text-muted">` + books[i].price + `$</p>
               <p class="card-text text-muted">` + books[i].category + `</p>
+              <p class="card-text text-muted">` + books[i].price + `$</p>
               <p class="card-text text-success">In stock</p>
               <a onclick="test()" href="#alert_space" id="addToCart" class="btn btn-success">Add to cart</a>
             </div>
