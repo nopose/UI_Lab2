@@ -28,8 +28,8 @@
 						<a class="nav-link" href="categories.html">Categories</a>
 					</li>
 				</ul>
-				<form class="form-inline my-2 my-lg-0" role="search" action="search.html">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search">
+				<form class="form-inline my-2 my-lg-0" role="search" onsubmit="return search()">
+					<input id="result" class="form-control mr-sm-2" type="search" placeholder="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
 			</div>
@@ -44,7 +44,7 @@
 			<nav class="col-md-2 hidden-xs-down bg-faded sidebar">
 			  <ul class="nav nav-pills flex-column">
 				<li class="nav-item" >
-				  <a class="nav-link active accordion-toggle" data-toggle="collapse" data-target="#choices" href="categories.html">Categories      <span></span></a>
+				  <a id="changeColor" class="nav-link active accordion-toggle" data-toggle="collapse" data-target="#choices" href="categories.html">Categories      <span></span></a>
 				</li>
 				<div id="choices" class="collapse show">
 				<li class="nav-item">
@@ -82,8 +82,6 @@
 						<div id="suggestedBook" class="card-group mx-auto">
 							
 						</div>
-					</div>
-					<div class="row">
 					</div>
 				</div>
 			</div>
