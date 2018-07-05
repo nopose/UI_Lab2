@@ -20,7 +20,7 @@ $(document).ready(function () {
                   "<span>"+ books[booksInCart[i]].author + " ~ " + books[booksInCart[i]].year +"</span>" +
                 "</div>\n" +
                 "<div class='quantity'>\n" +
-                  "<button class='minus-btn' type='button' name='button'>\n" +
+                  "<button class='minus-btn' id='"+ booksInCart[i] +"'' type='button' name='button'>\n" +
                     "<img src='res/images/minus.png' alt='' />\n" +
                   "</button>\n" +
                   "<input id='"+ booksInCart[i] +"' type='text' name='Quantity' value='"+ quantity[i] + "' disabled>\n" +
@@ -37,6 +37,7 @@ $(document).ready(function () {
   $(".finalTotal").append("<p class='PriceTotal'>Your total is (w/ taxes) : <mark>"+ (TOTAL * 1.13).toFixed(2) +"$</mark><a href='checkout.html'><button id='checkoutBTN' type='button' class='btn btn-success float-right'>Proceed to Checkout</button></a></p>")
 
   $('.minus-btn').click(function(e) {
+    var valid = true;
     e.preventDefault();
     var $this = $(this);
     var $input = $this.closest('div').find('input');
@@ -45,15 +46,21 @@ $(document).ready(function () {
 
     if (value > 1) {
         value = value - 1;
+        valid = true;
     } else {
         value = 0;
+        valid = false;
+        $("#"+ id +".total-price").html((0 * getPrice(id)).toFixed(2) + "$");
     }
 
     $input.val(value);
-    changeTotal(value, id, "dec");
+    if (valid) {
+      changeTotal(value, id, "dec");
+    }
     });
 
   $('.plus-btn').click(function(e) {
+      var valid = true;
       e.preventDefault();
       var $this = $(this);
       var $input = $this.closest('div').find('input');
@@ -62,21 +69,28 @@ $(document).ready(function () {
 
       if (value < 100) {
           value = value + 1;
+          valid = true;
+          $("#" + id +".minus-btn").removeAttr('disabled'); //TODO
       } else {
           value = 100;
+          $("#"+ id +".total-price").html((100 * getPrice(id)).toFixed(2) + "$");
+          updateFinalTotal(getPrice(id).toFixed(2))
+          $("#" + id +".minus-btn").addAttr('disabled');
       }
 
       $input.val(value);
-      changeTotal(value, id, "inc");
+      if (valid) {
+        changeTotal(value, id, "inc");
+      }
   });
 
 });
 
 function changeTotal(value, id, action) {
   $("#"+ id +".total-price").html((value * getPrice(id)).toFixed(2) + "$");
-  if (action == "inc")
+  if (action == "inc" && (value) != 101)
     updateFinalTotal(parseInt(getPrice(id)));
-  else if (action == "dec")
+  else if (action == "dec" && (value) != -1)
     updateFinalTotal(parseInt(-getPrice(id)));
 };
 

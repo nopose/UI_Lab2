@@ -30,7 +30,7 @@ $("#poetry").click(function(){writeBooks (0, "Poetry");});
 function writeBooks (type, search) {
 	var genbooks = [];
 	index = 0;
-	
+
 	//categories
 	if(type == 0) {
 		for (i = 0; i < books.length; i++){
@@ -42,7 +42,7 @@ function writeBooks (type, search) {
 		$("#title").empty()
 		$("#title").append("Category: " + search)
 	}
-	
+
 	//search
 	if(type == 1) {
 		for (i = 0; i < books.length; i++){
@@ -52,7 +52,7 @@ function writeBooks (type, search) {
 			}
 		}
 	}
-	
+
 	$("#bookContainer").empty();
 	for (i = 0; i < genbooks.length; i++) {
 		$("#bookContainer").append(`<div class="card text-center">
@@ -72,6 +72,7 @@ function writeBooks (type, search) {
 				</div>`)
 	}
 	return genbooks.length;
+
 }
 
 function generateBooks() {
@@ -102,7 +103,7 @@ $(document).ready(function fillSuggestedBook(){
 						<a onclick="test()" id="addToCart" class="btn btn-success">Add to cart</a>
 					</div>
 				</div>`)
-	}	
+	}
 });
 
 function search(){
