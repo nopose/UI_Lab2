@@ -94,7 +94,13 @@ function changeTotal(value, id, action) {
 
 function updateFinalTotal(changes) {
   $(".PriceTotal").html("Your total is (w/ taxes) : <mark>" + ((TOTAL += changes) * 1.13).toFixed(2) + "$</mark><a href='checkout.html'><button id='checkoutBTN' type='button' class='btn btn-success float-right'>Proceed to Checkout</button></a>");
-	console.log(TOTAL);
+  if(TOTAL <= 0){
+	  $(".PriceTotal").html("Your total is (w/ taxes) : <mark> 0.00$</mark><a href='checkout.html'><button id='checkoutBTN' type='button' class='btn btn-success float-right' disabled>Proceed to Checkout</button></a>");
+	  
+  } else{
+	  $("#checkoutBTN").removeAttr('disabled')
+  }
+  
 }
 
 function getPrice(bookID) {

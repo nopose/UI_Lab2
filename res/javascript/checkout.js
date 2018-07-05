@@ -1,3 +1,5 @@
+var finished = false;
+
 $(document).ready(function(){
 
     // Step show event
@@ -37,6 +39,8 @@ $(document).ready(function(){
 
     // Leaving step
     $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
+		console.log(stepDirection)
+		if(stepDirection === "forward"){
          if (parseInt(stepNumber) == 0) {
            // Validate step 1
            if (!validateStepOne()) {
@@ -57,7 +61,9 @@ $(document).ready(function(){
            if (!validateStepFour()) {
             return false;
            }
+			finish = true;
          }
+		}
       });
 
 
@@ -99,8 +105,10 @@ function toggleStatus() {
 
     if ($('#inlineCheckbox2').is(':checked')) {
         $('#shippingAddress :input').attr('disabled', true);
+		validateStepTwo();
     } else {
         $('#shippingAddress :input').removeAttr('disabled');
+		validateStepTwo();
     }
 }
 
@@ -119,7 +127,7 @@ function validateStepOne() {
   if (firstname.length < 6 || firstname === "") {
     $("#fnameError").html("The firstname is required and must be at least 6 caracters.").addClass("text-danger");
     success = false;
-  } else { $("#fnameError").html("").removeClass("text-danger"); success = true; }
+  } else { $("#fnameError").html("").removeClass("text-danger"); }
 
   if (lastname.length < 6 || lastname === "") {
     $("#lnameError").html("The lastname is required and must be at least 6 caracters.").addClass("text-danger");
@@ -130,33 +138,33 @@ function validateStepOne() {
   if (!(re.test(String(email).toLowerCase())) || email === "") {
     $("#emailError").html("The email is required and must satisfied a normal email pattern (a@test.ca).").addClass("text-danger");
     success = false;
-  } else { $("#emailError").html("").removeClass("text-danger"); success = true; }
+  } else { $("#emailError").html("").removeClass("text-danger");}
 
   if (password.length < 6 || password === "") {
     $("#passError").html("The password is required and must be at least 6 caracters.").addClass("text-danger");
     success = false;
-  } else { $("#passError").html("").removeClass("text-danger"); success = true; }
+  } else { $("#passError").html("").removeClass("text-danger"); }
 
   if (address.length < 6 || address === "") {
     $("#addError").html("The address is required and must be at least 6 caracters.").addClass("text-danger");
     success = false;
-  } else { $("#addError").html("").removeClass("text-danger"); success = true; }
+  } else { $("#addError").html("").removeClass("text-danger"); }
 
   if (city.length < 6 || city === "") {
     $("#cityError").html("The city is required and must be at least 6 caracters.").addClass("text-danger");
     success = false;
-  } else { $("#cityError").html("").removeClass("text-danger"); success = true; }
+  } else { $("#cityError").html("").removeClass("text-danger"); }
 
   if (province <= 0) {
     $("#provError").html("The province is required.").addClass("text-danger");
     success = false;
-  } else { $("#provError").html("").removeClass("text-danger"); success = true; }
+  } else { $("#provError").html("").removeClass("text-danger"); }
 
   re = /^[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ][0-9][ABCEGHJKLMNPRSTVWXYZ][0-9]$/;
   if (!(re.test(String(zip))) || zip === "") {
     $("#zipError").html("The zip is required and must satisfy this pattern [A1B2C3].").addClass("text-danger");
     success = false;
-  } else { $("#zipError").html("").removeClass("text-danger"); success = true; }
+  } else { $("#zipError").html("").removeClass("text-danger"); }
 
   return success;
 }
@@ -174,23 +182,29 @@ function validateStepTwo() {
   if (address.length < 6 || address === "") {
       $("#addError2").html("The address is required and must be at least 6 caracters.").addClass("text-danger");
       success = false;
-    } else { $("#addError2").html("").removeClass("text-danger"); success = true; }
+    } else { $("#addError2").html("").removeClass("text-danger"); }
 
     if (city.length < 6 || city === "") {
       $("#cityError2").html("The city is required and must be at least 6 caracters.").addClass("text-danger");
       success = false;
-    } else { $("#cityError2").html("").removeClass("text-danger"); success = true; }
+    } else { $("#cityError2").html("").removeClass("text-danger"); }
 
     if (province <= 0) {
       $("#provError2").html("The province is required.").addClass("text-danger");
       success = false;
-    } else { $("#provError2").html("").removeClass("text-danger"); success = true; }
+    } else { $("#provError2").html("").removeClass("text-danger"); }
 
     re = /^[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ][0-9][ABCEGHJKLMNPRSTVWXYZ][0-9]$/;
     if (!(re.test(String(zip))) || zip === "") {
       $("#zipError2").html("The zip is required and must satisfy this pattern [A1B2C3].").addClass("text-danger");
       success = false;
-    } else { $("#zipError2").html("").removeClass("text-danger"); success = true; }
+    } else { $("#zipError2").html("").removeClass("text-danger"); }
+  }
+  else{
+		$("#addError2").html("").removeClass("text-danger");
+		$("#cityError2").html("").removeClass("text-danger");
+		$("#provError2").html("").removeClass("text-danger");
+		$("#zipError2").html("").removeClass("text-danger");
   }
 
   return success;
@@ -203,7 +217,7 @@ function validateStepThree() {
   if (!($("input:radio[name='options']:checked").length > 0)) {
     $("#methodError").html("The option is required. You must choose at least one method.").addClass("text-danger");
     success = false;
-  } else { $("#methodError").html("").removeClass("text-danger"); success = true; }
+  } else { $("#methodError").html("").removeClass("text-danger"); }
 
   return success;
 }
@@ -220,7 +234,7 @@ function validateStepFour() {
   if (cardHolderName.length < 6 || cardHolderName === "") {
     $("#holderError").html("The Card Holder's name is required and must be at least 6 caracters.").addClass("text-danger");
     success = false;
-  } else { $("#holderError").html("").removeClass("text-danger"); success = true; }
+  } else { $("#holderError").html("").removeClass("text-danger"); }
 
   var re = /^[0-9]{12}$/;
   if (!(re.test(String(cardNumber)))) {
@@ -231,18 +245,18 @@ function validateStepFour() {
   if (cardMonth <= 0) {
     $("#monthError").html("The month is required.").addClass("text-danger");
     success = false;
-  } else { $("#monthError").html("").removeClass("text-danger"); success = true; }
+  } else { $("#monthError").html("").removeClass("text-danger"); }
 
   if (cardYear <= 0) {
     $("#yearError").html("The year is required.").addClass("text-danger");
     success = false;
-  } else { $("#yearError").html("").removeClass("text-danger"); success = true; }
+  } else { $("#yearError").html("").removeClass("text-danger"); }
 
   var re = /^[0-9]{3}$/;
   if (!(re.test(String(cardCVV)))) {
     $("#cvvError").html("The Security Code is required and must be 3 numbers.").addClass("text-danger");
     success = false;
-  } else { $("#cvvError").html("").removeClass("text-danger"); success = true; }
+  } else { $("#cvvError").html("").removeClass("text-danger"); }
 
   return success;
 }
@@ -255,6 +269,7 @@ function alertTimeout(wait){
 }
 
 function displayCheckedOutCompleted() {
+	if(finish){
 	$("#alert_space_checkout").empty()
     $("#alert_space_checkout").append(`
 		<div class="row">
@@ -268,4 +283,5 @@ function displayCheckedOutCompleted() {
 			</div>
 			</div>`);
     alertTimeout(2000);
+	}
 }
