@@ -63,11 +63,11 @@ function writeBooks (type, search) {
 						<h4 class="card-title">` + genbooks[i].name + `</h4>
 					</div>
 						<h6> Author: ` + genbooks[i].author + `</h6>
-						<a href="details.html" id="addToCart" class="btn btn-success">More details</a>
+						<a href="book_details.html" id="addToCart" class="btn btn-success">More details</a>
 					<div class="card-footer">
 						<p class="card-text">` + genbooks[i].price + `$</p>
 						<p class="card-text text-success">In stock</p>
-						<a onclick="test()" id="addToCart" class="btn btn-success">Add to cart</a>
+						<a onclick="test()" href="#alert_space" id="addToCart" class="btn btn-success">Add to cart</a>
 					</div>
 				</div>`)
 	}
@@ -77,7 +77,7 @@ function writeBooks (type, search) {
 
 function generateBooks() {
   var genbooks = [];
-  while(genbooks.length < 3){
+  while(genbooks.length < 4){
       var randomnumber = Math.floor(Math.random() * 10);
       if(genbooks.indexOf(randomnumber) > -1) continue;
       genbooks[genbooks.length] = randomnumber;
@@ -97,10 +97,11 @@ $(document).ready(function fillSuggestedBook(){
 						<h4 class="card-title">` + books[genbooks[i]].name + `</h4>
 					</div>
 						<h6> Author: ` + books[genbooks[i]].author + `</h6>
+						<a href="book_details.html" id="addToCart" class="btn btn-success">More details</a>
 					<div class="card-footer">
 						<p class="card-text">` + books[genbooks[i]].price + `$</p>
 						<p class="card-text text-success">In stock</p>
-						<a onclick="test()" id="addToCart" class="btn btn-success">Add to cart</a>
+						<a onclick="test()" href="#alert_space" id="addToCart" class="btn btn-success">Add to cart</a>
 					</div>
 				</div>`)
 	}

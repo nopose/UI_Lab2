@@ -24,7 +24,7 @@ var books = [{
     "price":"25.99",
     "author":"John Green",
     "year":"2017",
-    "category":"Ficton"
+    "category":"Fiction"
   },{
     "id":"4",
     "name":"1984",

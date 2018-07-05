@@ -19,6 +19,14 @@
 	.wrapper{
 		padding-left: 30px;
 	}
+	
+	.detail-wrapper{
+		max-width: 50%;
+	}
+}
+
+.card{
+	margin-bottom: 5% !important;
 }
 
 .wrapper{
@@ -35,6 +43,10 @@
 
 .nav-link{
 	color: #5cb85c;
+}
+
+.bottom-row{
+	padding-bottom: 5%;
 }
 
 
