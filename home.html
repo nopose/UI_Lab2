@@ -8,6 +8,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+		<link rel="stylesheet" href="res/custom.css">
 	</head>
 
 	<body onload="">
@@ -35,7 +36,50 @@
 				</form>
 			</div>
 		</nav>
+
+		<div class="bg"></div>
+		<div class="row">
+			<div id="alert_space" class="col-md-12">
+			</div>
+		</div>
+
+		<div class="row">
+			<nav class="col-md-2 hidden-xs-down bg-faded sidebar">
+			  <ul class="nav nav-pills flex-column">
+				<li class="nav-item" >
+				  <a id="changeColor" class="nav-link active accordion-toggle" data-toggle="collapse" data-target="#choices" href="categories.html">Categories      <span></span></a>
+				</li>
+				<div id="choices" class="collapse show">
+				<li class="nav-item">
+				  <a id="fiction" class="nav-link" href="#">Fiction</a>
+				</li>
+				<li class="nav-item">
+				  <a id="literature" class="nav-link" href="#">Literature</a>
+				</li>
+				<li class="nav-item">
+				  <a id="thriller" class="nav-link" href="#">Thriller</a>
+				</li>
+				<li class="nav-item">
+				  <a id="psychology" class="nav-link" href="#">Psychology</a>
+				</li>
+				<li class="nav-item">
+				  <a id="cook" class="nav-link" href="#">Cook</a>
+				</li>
+				<li class="nav-item ">
+				  <a id="poetry" class="nav-link" href="#">Poetry</a>
+				</li>
+				</div>
+			  </ul>
+			</nav>
+
+			<!-- All books in here -->
+			<div class="col-md-10 wrapper" id="AllBooks">
+
+			</div>
+		</div>
+
 	</body>
 	<script src="res/objects/books.js"></script>
+	<script type="text/javascript" src="res/javascript/home.js" ></script>
 	<script type="text/javascript" src="res/javascript/general_book.js" ></script>
 </html>
