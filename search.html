@@ -31,7 +31,7 @@
 					</li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0" role="search" onsubmit="return search()">
-					<input id="result" class="form-control mr-sm-2" type="search" placeholder="Search">
+					<input id="result" class="form-control mr-sm-2" type="search" placeholder="Books title, author, ...">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
 			</div>
@@ -43,7 +43,8 @@
 				<form onsubmit="return localsearch()">
 					<div class="form-group col-md-6 mx-auto">
 						<label class="float-left font-weight-bold">New search</label>
-						<input id="localResult" class="form-control mr-sm-2" type="search" placeholder="Search">
+						<input id="localResult" class="form-control mr-sm-2" type="search" placeholder="Books title, author, ...">
+						<p id="searchError"></p>
 					</div>
 				</form>
 			</div>
@@ -61,7 +62,7 @@
 	<script>
 		$(document).ready(function(){
 		 var value = localStorage.getItem("result");
-		 if(value != null){
+		 if(value != null && value !== ""){
 			$("#writeSearch").text("Results for your search \"" + value + "\"");
 			var number = writeBooks(1, value);
 			$("#writeNumber").text(number + " results");

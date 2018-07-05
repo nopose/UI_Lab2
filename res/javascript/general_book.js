@@ -28,6 +28,8 @@ $("#cook").click(function(){writeBooks (0, "Cook");});
 $("#poetry").click(function(){writeBooks (0, "Poetry");});
 
 function writeBooks (type, search) {
+	console.log(type)
+	console.log(search)
 	var genbooks = [];
 	index = 0;
 
@@ -46,7 +48,7 @@ function writeBooks (type, search) {
 	//search
 	if(type == 1) {
 		for (i = 0; i < books.length; i++){
-			if((books[i].name.search( new RegExp(search, "i")) !== -1) || (books[i].author.search( new RegExp(search, "i")) !== -1)) {
+			if((books[i].name.search( new RegExp(search, "i")) !== -1) || (books[i].author.search( new RegExp(search, "i")) !== -1)  || (books[i].category.search( new RegExp(search, "i")) !== -1)) {
 				genbooks[index] = books[i];
 				index++;
 			}
@@ -65,6 +67,7 @@ function writeBooks (type, search) {
 						<h6> Author: ` + genbooks[i].author + `</h6>
 						<a onclick="bookDetails('`+ genbooks[i].id + `')" href="javascript:void(0);" id="addToCart" class="btn btn-success">More details</a>
 					<div class="card-footer">
+						<p class="card-text text-muted">` + genbooks[i].category + `</p>
 						<p class="card-text">` + genbooks[i].price + `$</p>
 						<p class="card-text text-success">In stock</p>
 						<a onclick="test()" href="#alert_space" id="addToCart" class="btn btn-success">Add to cart</a>
@@ -99,17 +102,13 @@ $(document).ready(function fillSuggestedBook(){
 						<h6> Author: ` + books[genbooks[i]].author + `</h6>
 						<a onclick="bookDetails('`+ books[genbooks[i]].id + `')" href="javascript:void(0);" id="addToCart" class="btn btn-success">More details</a>
 					<div class="card-footer">
+						<p class="card-text text-muted">` + books[genbooks[i]].category + `</p>
 						<p class="card-text">` + books[genbooks[i]].price + `$</p>
 						<p class="card-text text-success">In stock</p>
 						<a onclick="test()" href="#alert_space" id="addToCart" class="btn btn-success">Add to cart</a>
 					</div>
 				</div>`)
 	}
-
-	$(window).on('hashchange', function(e){
-    // do something...
-		writeBooks(0, "Fiction");
-	});
 });
 
 function search(){
@@ -122,8 +121,18 @@ function search(){
 
 function localsearch(){
 	var value = $("#localResult").val();
-	localStorage.setItem("result", value);
-	window.location.href="search.html";
+	
+	if (value === "") {
+    $("#searchError").html("A value is required to perform a search.").addClass("text-danger");
+    success = false;
+	} else { 
+		$("#searchError").html("").removeClass("text-danger"); success = true;
+	}
+	
+	if(success) {
+		localStorage.setItem("result", value);
+		window.location.href="search.html";	
+	}
 	return false
 }
 

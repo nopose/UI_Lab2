@@ -9,7 +9,9 @@ function readURL() {
       var parts = paramPairs[i].split('=');
       params = parts[1];
     }
-
+	
     writeBooks(0, params);
   }
+  
+	window.history.replaceState(null, null, window.location.pathname);
 }
