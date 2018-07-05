@@ -63,7 +63,7 @@ function writeBooks (type, search) {
 						<h4 class="card-title">` + genbooks[i].name + `</h4>
 					</div>
 						<h6> Author: ` + genbooks[i].author + `</h6>
-						<a href="book_details.html" id="addToCart" class="btn btn-success">More details</a>
+						<a onclick="bookDetails('`+ genbooks[i].name + `')" href="javascript:void(0);" id="addToCart" class="btn btn-success">More details</a>
 					<div class="card-footer">
 						<p class="card-text">` + genbooks[i].price + `$</p>
 						<p class="card-text text-success">In stock</p>
@@ -96,7 +96,7 @@ $(document).ready(function fillSuggestedBook(){
 						<h4 class="card-title">` + books[genbooks[i]].name + `</h4>
 					</div>
 						<h6> Author: ` + books[genbooks[i]].author + `</h6>
-						<a href="book_details.html" id="addToCart" class="btn btn-success">More details</a>
+						<a onclick="bookDetails('`+ books[genbooks[i]].name + `')" href="javascript:void(0);" id="addToCart" class="btn btn-success">More details</a>
 					<div class="card-footer">
 						<p class="card-text">` + books[genbooks[i]].price + `$</p>
 						<p class="card-text text-success">In stock</p>
@@ -117,7 +117,57 @@ function search(){
 function localsearch(){
 	var value = $("#localResult").val();
 	localStorage.setItem("result", value);
-	console.log(value);
 	window.location.href="search.html";
 	return false
+}
+
+function bookDetails(search){
+	localStorage.setItem("detail", search);
+	window.location.href="book_details.html";
+}
+	
+function loadDetails(){
+	var search = localStorage.getItem("detail");
+	var genbooks;
+	//search
+	for (i = 0; i < books.length; i++){
+		if(books[i].name.search( new RegExp(search, "i")) !== -1) {
+			genbooks = books[i];
+			break;
+		}
+	}
+	
+	$("#bookContainer").empty();
+	
+	$("#bookContainer").append(`<div class="row bottom-row">
+				<div class="col-md-4">
+					<img class="imgContainer card-img-top" src="` + genbooks.url + `" alt="` + genbooks.name + `">
+				</div>
+				<div class="col-md-7 offset-md-1">
+					<div class="row">
+						<h4 class="font-weight-bold">` + genbooks.name + `</h4>
+					</div>
+					<div class="row bottom-row">
+						<h6 class="font-weight-bold">Author: ` + genbooks.author + `</h6>
+					</div>
+					<div class="row">
+						<h6 class="font-weight-bold">Summary</h6></br>
+						<p>` + genbooks.description + `<p>
+					</div>
+					<div class="row bottom-row">
+						<h6 class="font-weight-bold">Category:&nbsp;</h6>
+						<h6>` + genbooks.category + `</h6>
+					</div>
+					<div class="row">
+						<h6 class="font-weight-bold">` + genbooks.price + `$</h6>
+					</div>
+					<div class="row">
+						<h6 class="text-success">In stock</h6>
+						
+					</div>
+					<div class="row">
+					<a onclick="test()" href="#alert_space" id="addToCart" class="btn btn-success">Add to cart</a>
+					</div>
+				</div>
+			</div>`)	
 }

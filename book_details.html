@@ -40,38 +40,8 @@
 				</div>
 			</div>
 		
-			<div class="offset-3 detail-wrapper bottom-row">
-			<div class="row bottom-row">
-				<div class="col-md-4">
-					<img class="imgContainer card-img-top" src="res/images/turtlesallthewaydown.jpg" alt="Turtles all the way down">
-				</div>
-				<div class="col-md-7 offset-md-1">
-					<div class="row">
-						<h4 class="font-weight-bold">Turtles all the way down</h4>
-					</div>
-					<div class="row bottom-row">
-						<h6 class="font-weight-bold">Author: John Green</h6>
-					</div>
-					<div class="row">
-						<h6 class="font-weight-bold">Summary</h6></br>
-						<p>Turtles All the Way Down is about lifelong friendship, the intimacy of an unexpected reunion, Star Wars fan fiction, and tuatara. But at its heart is Aza Holmes, a young woman navigating daily existence within the ever-tightening spiral of her own thoughts.<p>
-					</div>
-					<div class="row bottom-row">
-						<h6 class="font-weight-bold">Category:&nbsp;</h6>
-						<h6> Fiction</h6>
-					</div>
-					<div class="row">
-						<h6 class="font-weight-bold">17.99$</h6>
-					</div>
-					<div class="row">
-						<h6 class="text-success">In stock</h6>
-						
-					</div>
-					<div class="row">
-					<a onclick="test()" href="#alert_space" id="addToCart" class="btn btn-success">Add to cart</a>
-					</div>
-				</div>
-			</div>
+			<div id="bookContainer" class="offset-3 detail-wrapper bottom-row">
+			
 			</div>
 			
 			<div class="row">
@@ -88,4 +58,7 @@
 	</body>
 	<script src="res/objects/books.js"></script>
 	<script type="text/javascript" src="res/javascript/general_book.js" ></script>
+	<script>
+		$(document).ready(loadDetails());
+	</script>
 </html>
